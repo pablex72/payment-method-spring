@@ -1,14 +1,11 @@
 package narif.poc.paypal.controller;
 import narif.poc.paypal.dto.Order;
-
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
 import narif.poc.paypal.util.URLLocation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -28,7 +25,7 @@ public class PaypalController {
 
         // Payment amount - setCurrency - USD
         Amount amount = new Amount();
-        amount.setCurrency("USD");
+        amount.setCurrency(order.getCurrency());
         // setTotal - price
         double price = new BigDecimal(order.getPrice()).setScale(2, RoundingMode.HALF_UP).doubleValue();
         amount.setTotal(String.format("%.2f", price));
@@ -36,7 +33,7 @@ public class PaypalController {
         // Transaction information
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
-        transaction.setDescription("Ecommerce transaction.");
+        transaction.setDescription(order.getDescription());
 
         // The Payment creation API requires a list of Transaction
         List<Transaction> transactions = new ArrayList<Transaction>();
@@ -74,7 +71,6 @@ public class PaypalController {
                     return "redirect:" + link.getHref();
                 }
             }
-
         } catch (PayPalRESTException e) {
             System.err.println(e.getDetails());
             return "redirect:/paypal/error";
