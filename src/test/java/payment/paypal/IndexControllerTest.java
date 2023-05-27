@@ -1,4 +1,4 @@
-package narif.poc.paypal;
+package payment.paypal;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

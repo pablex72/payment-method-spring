@@ -1,4 +1,4 @@
-package narif.poc.paypal.util;
+package payment.paypal.util;
 
 import javax.servlet.http.HttpServletRequest;
 

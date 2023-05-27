@@ -1,4 +1,4 @@
-package narif.poc.paypal.dto;
+package payment.paypal.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Order {
+public class PaymentDto {
 
     private double price;
     private String currency;

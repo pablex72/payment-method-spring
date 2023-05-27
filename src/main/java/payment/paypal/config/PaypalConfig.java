@@ -1,4 +1,4 @@
-package narif.poc.paypal.config;
+package payment.paypal.config;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.OAuthTokenCredential;
 import com.paypal.base.rest.PayPalRESTException;
